@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/main.css">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="../static/css/web.css">
+    <title>Acuanavio-Python</title>
+</head>
+<body>
+    <nav>
+        <div class="volver">
+            <button>
+                <a href=" {{ url_for('index')}}">Volver</a>
+            </button>
+        </div>
+        <div class="logo">
+            <div class="logo__titulo">
+                <h2>Acuanavio Python</h2>
+            </div>
+            <div class="logo__img">
+                <img src="../static/img/Acuanavio.svg" alt="Acuanavio">
+                <img src="https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/files/python-logo-only.svg" alt="Python">
+            </div>
+        </div>
+        
+    </nav>
+    <div class="informacion">
+        <h1>Proveedores</h1>
+        <div class="informacion__tabla">
+          <h2>DataFrame de los proveedores disponibles</h2>
+          <div class="informacion__tabla-contenido">
+            {% for table in tables %}
+              {{ table|safe }}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="graficas">
+        <h1>Graficas disponibles</h1>
+        <div class="graficas__herramientas">
+    
+        </div>
+      </div>
+          <img src="{{ grafica_url }}" alt="Gráfica del DataFrame">
+</body>
+</html>

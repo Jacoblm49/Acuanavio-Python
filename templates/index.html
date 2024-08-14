@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/main.css">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <title>Acuanavio-Python</title>
+</head>
+<body>
+
+    <div class="contenedor">
+        <nav>
+            <div class="logo">
+                <div class="logo__titulo">
+                    <h2>Acuanavio Python</h2>
+                </div>
+                <div class="logo__img">
+                    <img src="../static/img/Acuanavio.svg" alt="Acuanavio">
+                    <img src="https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/files/python-logo-only.svg" alt="Python">
+                </div>
+            </div>
+        </nav>
+        <div class="contenedor__cards">
+            <div class="card">
+                <div class="card__titulo">
+                    <h1>Lotes</h1>
+                </div>
+                <div class="card__img">
+                    <img src="../static/img/PezAñadir.jpg"  ">
+                </div>
+                <div class="card__info">
+                    <h2>Revisa los lotes disponibles de tu granja y sus estadisticas</h2>
+                    <div class="card__info-btn">
+                        <button>
+                            <a href="{{ url_for('lotes')}}">Lotes</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card__titulo">
+                    <h1>Canales</h1>
+                </div>
+                <div class="card__img">
+                    <img src="../static/img/canales.jpg"  width=100px">
+                </div>
+                <div class="card__info">
+                    <h2>Revisa los canales disponibles de tu granja y sus estadisticas</h2>
+                    <div class="card__info-btn">
+                        <button>
+                            <a href=" {{ url_for('canales')}}">Canales</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card__titulo">
+                    <h1>Proveedores</h1>
+                </div>
+                <div class="card__img">
+                    <img src="../static/img/PezAñadir.jpg"  width=100px">
+                </div>
+                <div class="card__info">
+                    <h2>Revisa los datos de los proveedores de tu granja y sus estadisticas</h2>
+                    <div class="card__info-btn">
+                        <button>
+                            <a href=" {{ url_for('proveedores')}}">Proveedores</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
