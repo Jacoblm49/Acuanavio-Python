@@ -1,8 +1,13 @@
 # app.py
 from flask import Flask, render_template
+#conexion bd
 from db_conexion import conexion_db
+
+#Consultas generales DF
 from consultas import obtener_todos_canales, obtener_todos_lotes, obtener_todos_proveedores
-from graficas.lotes import grafica_PromIngresos, crear_grafica2
+
+#Subconsultas, tablas y graficas
+from consultas_graficas.lotes import obtener_promedio_gramos_por_lote,grafica_promedio_gramos_por_lote
 
 app = Flask("Acuanavio_python")
 
@@ -24,13 +29,20 @@ def canales():
 def lotes():
     conexion = conexion_db()
     if conexion:
-        df = obtener_todos_lotes(conexion)
+        df_lotes = obtener_todos_lotes(conexion)
+        df_promedio_gramos = obtener_promedio_gramos_por_lote(conexion)
         conexion.close()
-        if df is not None:
-            grafica1_url = grafica_PromIngresos(df)
-            grafica2_url = crear_grafica2(df)
-            return render_template('lotes.html', tables=[df.to_html(classes='data')], titles=df.columns.values, grafica1=grafica1_url, grafica2=grafica2_url)
+        if df_lotes is not None and df_promedio_gramos is not None:
+            grafica_promedio_url = grafica_promedio_gramos_por_lote(df_promedio_gramos)
+            tabla_grafica_promedio_gramos = df_promedio_gramos.to_html(classes='data')
+            return render_template('lotes.html', 
+                                   tables=[df_lotes.to_html(classes='data')],
+                                   titles=df_lotes.columns.values, 
+                                   grafica1=grafica_promedio_url,
+                                   tabla_grafica_promedio_gramos=tabla_grafica_promedio_gramos)
         return "Error en la consulta tbllotes a la base de datos"
+
+
 
 @app.route('/Proveedores')
 def proveedores():

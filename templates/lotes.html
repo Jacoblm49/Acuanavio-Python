@@ -44,9 +44,17 @@
       <button id="graficas-btn">Ver graficas</button>
     </div>
     <div class="graficas__herramientas active" id="caja_graficas">
-      <img src="{{ grafica1 }}" alt="Gráfica del DataFrame" id="grafica"> 
-      <img src="{{ grafica2 }}" alt="Gráfica del DataFrame" id="grafica"> 
+      <div class="grafica__container">
+          <img src="{{ grafica1 }}" alt="Gráfica del DataFrame" id="grafica"> 
+      </div>
+      <div class="tabla__container">
+          <h2>Datos del Promedio de Peso por Fecha</h2>
+          <div class="informacion__tabla-contenido">
+              {{ tabla_grafica_promedio_gramos|safe }}
+          </div>
+      </div>
     </div>
+    
   </div>
 
   <script>
