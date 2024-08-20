@@ -36,30 +36,50 @@
             {% endfor %}
           </div>
         </div>
+    </div>
+    <div class="graficas">
+      <h1>Graficas disponibles</h1>
+      <div class="graficas__ver">
+        <button id="graficas-btn">Ver graficas</button>
       </div>
-      <div class="graficas">
-        <h1>Graficas disponibles</h1>
-        <div class="graficas__herramientas">
-
+  
+      <div class="graficaCard active">
+        <h1>Datos del estado del canal</h1>
+        <div class="graficas__herramientas " id="caja_graficas">
+          <div class="grafica__container">
+              <img src="{{ grafica_POC }}" alt="Gráfica del DataFrame" id="grafica"> 
+          </div>
+          <div class="tabla__container">
+              <div class="informacion__tabla-contenido">
+                  {{ tabla_POC|safe }}
+              </div>
+          </div>
         </div>
+        
       </div>
-          <img src="{{ grafica_url }}" alt="Gráfica del DataFrame">
+  
+
+    </div>
+
 
           
   <script>
-  const grafica = document.getElementById('caja_graficas')
+      const graficas = document.getElementsByClassName('graficaCard')
 
     function getRandomNumber(min, max) {
       return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
+    }
 
-  const randomNumber = getRandomNumber(100, 3000);
+    const randomNumber = getRandomNumber(100, 3000);
 
-   document.getElementById('graficas-btn').addEventListener('click',()=>{
-    setTimeout(()=>{
-      grafica.classList.toggle('active')
-    },randomNumber)
-   })
+    document.getElementById('graficas-btn').addEventListener('click',()=>{
+      setTimeout(()=>{
+      for (let index = 0; index < graficas.length; index++) {
+        graficas[index].classList.toggle('active')
+      }
+
+      },randomNumber)
+    })
   </script>
 </body>
 </html>

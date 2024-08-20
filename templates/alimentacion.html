@@ -28,9 +28,9 @@
       </div>
   </nav>
   <div class="informacion">
-    <h1>Lotes</h1>
+    <h1>Alimentacion</h1>
     <div class="informacion__tabla">
-      <h2>DataFrame de lotes disponibles</h2>
+      <h2>DataFrame de insumos</h2>
       <div class="informacion__tabla-contenido">
         {% for table in tables %}
           {{ table|safe }}
@@ -45,48 +45,23 @@
     </div>
 
     <div class="graficaCard active">
-      <h1>Promedio de gramos por lote</h1>
+      <h1>Cantidad de insumo consumido por lote</h1>
       <div class="graficas__herramientas " id="caja_graficas">
         <div class="grafica__container">
-            <img src="{{ grafica_PGL }}" alt="Gráfica del DataFrame" id="grafica"> 
+            <img src="{{ grafica_CICL }}" alt="Gráfica del DataFrame" id="grafica"> 
         </div>
         <div class="tabla__container">
+            <h2>Datos del promedio de gramos por lote</h2>
             <div class="informacion__tabla-contenido">
-                {{ tabla_PGL|safe }}
+                {{ tabla_CICL|safe }}
             </div>
         </div>
       </div>
       <div class="graficas__resultados">
-        <h3>El promedio general del peso de lotes esta en:
-          {{promedio_PGL}}
-        </h3>
-        <h3>Los lotes estan ingresando con 
-          {{estadoPeso_PGL}}
+        <h3>El lote #{{nombre_max_CICL}} cuenta con la mayor alimentacion, {{max_CICL}} KG en total
         </h3>
       </div>
     </div>
-
-    <div class="graficaCard active">
-      <h1>Promedio de costos por lote</h1>
-      <div class="graficas__herramientas " id="caja_graficas">
-        <div class="grafica__container">
-            <img src="{{ grafica_PCL }}" alt="Gráfica del DataFrame" id="grafica"> 
-        </div>
-        <div class="tabla__container">
-            <div class="informacion__tabla-contenido">
-                {{ tabla_PCL|safe }}
-            </div>
-        </div>
-      </div>
-      <div class="graficas__resultados">
-        <h3>El promedio general del costo x unidad esta en
-         ${{promedio_PCL}}cop
-        </h3>
-
-      </div>
-    </div>
-    
-    
     
   </div>
 

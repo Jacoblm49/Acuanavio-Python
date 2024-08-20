@@ -71,25 +71,58 @@
     cursor: pointer;
     background-color: var(--complementary-color);
 }
+.graficaCard{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.799);
+}
 .graficas__herramientas {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    width: auto;
+    height: 25em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     align-items: start;
+    margin: 2em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.799);
+    border-radius: 20px;
 }
 
-.grafica__container {
-    /* Ajustes específicos para la sección de la gráfica */
+.grafica__container{
+    width: 60%;
 }
-
-.tabla__container {
-    /* Ajustes específicos para la sección de la tabla */
-    overflow-x: auto;
+.grafica__container img{
+    width: 100%;
+}
+.tabla__container{
+    width: 40%;
+    padding: 1em;
+    margin-right: 1em;
+    height: 100%;
+    overflow: auto;
 }
 
 .active{
-    width: 0%;
+    width: 0;
     height: 0;
+    display: inline-block;
+    position: relative;
+    top:-1000px;
     opacity: 0;
-    overflow: hidden;
+    z-index: -1000;
+    font-size: 1px;
+}
+
+.graficas__resultados{
+    width: 100%;
+    height: auto;
+    margin-bottom: 1em;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
 }

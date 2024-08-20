@@ -42,3 +42,16 @@ def obtener_todos_proveedores(conexion):
             INNER JOIN tbldepartamentos as DE ON MU.Departamento = DE.IdDepartamento;
             """
     return obtener_datos(conexion, query)
+
+def obtener_todos_alimentacion(conexion):
+    query="""
+            SELECT AL.IdAlimentacion as 'ID', AL.Fecha , INS.Referencia, AL.Cantidad AS 'Cantidad en KG', LC.Lote , LC.Canal, CONCAT(US.DocIdentidad ,' - ', US.Nombres,'  ', US.Apellidos) AS 'Usuario a Cargo'
+
+            FROM tblalimentacion as AL INNER JOIN tbllotecanal as LC
+            ON AL.LoteCanal = LC.IdLoteCanal 
+            INNER JOIN tblinsumos as INS
+            ON AL.Insumo = INS.IdInsumo 
+            INNER JOIN tblusuarios as US
+            ON AL.Usuario = US.DocIdentidad;
+            """
+    return obtener_datos(conexion,query)

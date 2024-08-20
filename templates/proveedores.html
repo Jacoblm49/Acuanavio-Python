@@ -1,48 +1,89 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/css/main.css">
     <link rel="stylesheet" href="../static/css/index.css">
     <link rel="stylesheet" href="../static/css/web.css">
+
     <title>Acuanavio-Python</title>
-</head>
-<body>
-    <nav>
-        <div class="volver">
-            <button>
-                <a href=" {{ url_for('index')}}">Volver</a>
-            </button>
-        </div>
-        <div class="logo">
-            <div class="logo__titulo">
-                <h2>Acuanavio Python</h2>
-            </div>
-            <div class="logo__img">
-                <img src="../static/img/Acuanavio.svg" alt="Acuanavio">
-                <img src="https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/files/python-logo-only.svg" alt="Python">
-            </div>
-        </div>
-        
-    </nav>
-    <div class="informacion">
-        <h1>Proveedores</h1>
-        <div class="informacion__tabla">
-          <h2>DataFrame de los proveedores disponibles</h2>
-          <div class="informacion__tabla-contenido">
-            {% for table in tables %}
-              {{ table|safe }}
-            {% endfor %}
+  </head>
+  <body>
+  <nav>
+      <div class="volver">
+          <button>
+              <a href=" {{ url_for('index')}}">Volver</a>
+              <a href=""></a>
+          </button>
+      </div>
+      <div class="logo">
+          <div class="logo__titulo">
+              <h2>Acuanavio Python</h2>
           </div>
+          <div class="logo__img">
+              <img src="../static/img/Acuanavio.svg" alt="Acuanavio">
+              <img src="https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/files/python-logo-only.svg" alt="Python">
+          </div>
+      </div>
+  </nav>
+  <div class="informacion">
+    <h1>Proveedores</h1>
+    <div class="informacion__tabla">
+      <h2>DataFrame de proveedores disponibles</h2>
+      <div class="informacion__tabla-contenido">
+        {% for table in tables %}
+          {{ table|safe }}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="graficas">
+    <h1>Graficas disponibles</h1>
+    <div class="graficas__ver">
+      <button id="graficas-btn">Ver graficas</button>
+    </div>
+
+    <div class="graficaCard active">
+      <h1>Datos de ventas por proveedor</h1>
+      <div class="graficas__herramientas " id="caja_graficas">
+        <div class="grafica__container">
+            <img src="{{ grafica_UV }}" alt="Gráfica del DataFrame" id="grafica"> 
+        </div>
+        <div class="tabla__container">
+            <div class="informacion__tabla-contenido">
+                {{ tabla_UV|safe }}
+            </div>
         </div>
       </div>
-      <div class="graficas">
-        <h1>Graficas disponibles</h1>
-        <div class="graficas__herramientas">
-    
-        </div>
+      <div class="graficas__resultados">
+        <h2>{{nombre_max_UV}} a sido el mayor proveedor, con {{max_UV}} uniades vendidas</h2>
+        <h3>El promedio general de unidades vendidas esta en:
+          {{promedio_UV}}
+        </h3>
       </div>
-          <img src="{{ grafica_url }}" alt="Gráfica del DataFrame">
-</body>
+    </div>
+
+  </div>
+
+  <script>
+    const graficas = document.getElementsByClassName('graficaCard')
+
+      function getRandomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    const randomNumber = getRandomNumber(100, 3000);
+
+    document.getElementById('graficas-btn').addEventListener('click',()=>{
+      setTimeout(()=>{
+      for (let index = 0; index < graficas.length; index++) {
+        graficas[index].classList.toggle('active')
+      }
+        
+      },randomNumber)
+    })
+  </script>
+
+  </body>
 </html>
