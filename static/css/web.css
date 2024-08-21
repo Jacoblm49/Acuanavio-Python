@@ -58,6 +58,7 @@
 .graficas__ver{
     margin: 0 auto;
     margin: .5em;
+    padding-bottom: 3em;
 }
 .graficas__ver button{
     margin-top: 1em;
